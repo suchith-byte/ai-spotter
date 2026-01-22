@@ -1,0 +1,451 @@
+# AI Service Registry Configuration
+# This file contains all AI services and their detection patterns.
+# Add new services or modify patterns here without changing Python code.
+#
+# Pattern Syntax:
+# - Use double quotes for patterns containing special characters
+# - Backslashes need to be escaped as \
+# - For complex patterns, use YAML literal block syntax (|)
+
+services:
+- name: OpenAI
+  package_names:
+  - openai
+  - tiktoken
+  - openai-python
+  import_patterns:
+  - from\s+openai\s+import
+  - import\s+openai
+  - from\s+langchain\.openai
+  - from\s+openai\.
+  api_endpoints:
+  - api.openai.com
+  - api.openai.com/v1
+  - api.openai.com/v1/chat
+  - api.openai.com/v1/completions
+  config_key_patterns:
+  - OPENAI_API_KEY
+  - OPENAI_ORG_ID
+  - OPENAI_API_BASE
+  - OPENAI_MODEL
+  - OPENAI_TEMPERATURE
+  model_patterns:
+  - gpt-[\d\.]+
+  - gpt-4
+  - gpt-3\.5
+  - o1-[\w-]+
+  - text-davinci-[\d]+
+  - text-curie-[\d]+
+  - text-babbage-[\d]+
+  - text-ada-[\d]+
+  - embedding-[\w-]+
+  - text-embedding-[\w-]+
+  - whisper-[\w-]+
+  client_patterns:
+  - OpenAI\s*\(
+  - ChatOpenAI\s*\(
+  - OpenAIEmbeddings\s*\(
+  - OpenAIChat\s*\(
+  - client\s*=\s*openai\.
+- name: Anthropic
+  package_names:
+  - anthropic
+  - '@anthropic-ai/sdk'
+  import_patterns:
+  - from\s+anthropic\s+import
+  - import\s+anthropic
+  - from\s+langchain\.anthropic
+  - '@anthropic-ai/sdk'
+  api_endpoints:
+  - api.anthropic.com
+  - api.anthropic.com/v1
+  config_key_patterns:
+  - ANTHROPIC_API_KEY
+  - ANTHROPIC_API_VERSION
+  model_patterns:
+  - claude-[\d\.]+
+  - claude-instant-[\d\.]+
+  - claude-sonnet-[\d\.]+
+  - claude-opus-[\d\.]+
+  - claude-haiku-[\d\.]+
+  client_patterns:
+  - Anthropic\s*\(
+  - ChatAnthropic\s*\(
+  - AnthropicClient\s*\(
+- name: Google AI
+  package_names:
+  - google-generativeai
+  - google-cloud-aiplatform
+  - vertexai
+  - '@google/generative-ai'
+  import_patterns:
+  - from\s+google\.generativeai\s+import
+  - import\s+google\.generativeai
+  - from\s+google\.cloud\s+import\s+aiplatform
+  - from\s+vertexai\s+import
+  - from\s+langchain\.google
+  - '@google/generative-ai'
+  api_endpoints:
+  - generativelanguage.googleapis.com
+  - aiplatform.googleapis.com
+  - us-central1-aiplatform.googleapis.com
+  - generativelanguage.googleapis.com/v1
+  config_key_patterns:
+  - GOOGLE_AI_API_KEY
+  - GOOGLE_APPLICATION_CREDENTIALS
+  - GEMINI_API_KEY
+  - GOOGLE_API_KEY
+  model_patterns:
+  - gemini-[\w-]+
+  - gemini-pro
+  - gemini-ultra
+  - text-bison
+  - chat-bison
+  - code-bison
+  client_patterns:
+  - genai\s*\.\s*configure
+  - ChatGoogleGenerativeAI\s*\(
+  - VertexAI\s*\(
+  - GoogleGenerativeAI\s*\(
+- name: Hugging Face
+  package_names:
+  - transformers
+  - huggingface_hub
+  - datasets
+  - accelerate
+  - sentencepiece
+  - tokenizers
+  import_patterns:
+  - from\s+transformers\s+import
+  - import\s+transformers
+  - from\s+huggingface_hub\s+import
+  - from\s+langchain\.huggingface
+  - '@huggingface/'
+  api_endpoints:
+  - api-inference.huggingface.co
+  - huggingface.co
+  - inference-api.huggingface.co
+  config_key_patterns:
+  - HUGGINGFACE_API_KEY
+  - HF_API_KEY
+  - HF_TOKEN
+  - HUGGING_FACE_HUB_TOKEN
+  model_patterns:
+  - model\s*[:=]\s*["']?[\w-]+/[\w-]+
+  - meta-llama/[\w-]+
+  - bigscience/bloom
+  - google/flan-[\w-]+
+  - hf_[\w-]+/[\w-]+
+  client_patterns:
+  - pipeline\s*\(
+  - HuggingFacePipeline\s*\(
+  - HuggingFaceHub\s*\(
+  - AutoModelFor
+  - AutoTokenizer
+- name: LangChain
+  package_names:
+  - langchain
+  - langchain-core
+  - langchain-community
+  - langchain-openai
+  - langsmith
+  import_patterns:
+  - from\s+langchain\s+import
+  - import\s+langchain
+  - from\s+langchain\.
+  - from\s+langsmith\s+import
+  api_endpoints:
+  - api.smith.langchain.com
+  config_key_patterns:
+  - LANGCHAIN_API_KEY
+  - LANGCHAIN_TRACING_V2
+  - LANGCHAIN_ENDPOINT
+  - LANGSMITH_API_KEY
+  model_patterns: []
+  client_patterns:
+  - LLMChain\s*\(
+  - ConversationChain\s*\(
+  - (?:langchain|LangChain).*Agent\s*\(
+  - from\s+langchain.*Agent
+  - ^Agent\s*\(
+  - RetrievalQA\s*\(
+  - VectorStore\s*\(
+- name: Azure OpenAI
+  package_names:
+  - azure-openai
+  - azure-ai-textanalytics
+  - azure-cognitiveservices-language
+  - '@azure/openai'
+  import_patterns:
+  - from\s+azure\.openai\s+import
+  - from\s+azure\.ai\.textanalytics\s+import
+  - from\s+langchain\.azure
+  - '@azure/openai'
+  api_endpoints:
+  - openai.azure.com
+  - cognitiveservices.azure.com
+  config_key_patterns:
+  - AZURE_OPENAI_API_KEY
+  - AZURE_OPENAI_ENDPOINT
+  - AZURE_OPENAI_DEPLOYMENT_NAME
+  - AZURE_OPENAI_API_VERSION
+  model_patterns:
+  - gpt-[\d\.]+
+  - text-davinci-[\d]+
+  - text-embedding-[\w-]+
+  client_patterns:
+  - AzureOpenAI\s*\(
+  - AzureChatOpenAI\s*\(
+  - OpenAIClient\s*\(
+- name: AWS Bedrock
+  package_names:
+  - boto3
+  - aws-sdk
+  import_patterns:
+  - from\s+boto3.*bedrock
+  - '@aws-sdk/client-bedrock'
+  - from\s+langchain\.bedrock
+  api_endpoints:
+  - bedrock-runtime.us-east-1.amazonaws.com
+  config_key_patterns:
+  - BEDROCK_REGION
+  model_patterns:
+  - anthropic\.claude-[\w-]+
+  - amazon\.titan-[\w-]+
+  - ai21\.j2-[\w-]+
+  - meta\.llama-[\w-]+
+  client_patterns:
+  - bedrock-runtime
+  - client\s*\(\s*["']bedrock
+  - BedrockRuntime\s*\(
+  - ChatBedrock\s*\(
+- name: Replicate
+  package_names:
+  - replicate
+  import_patterns:
+  - from\s+replicate\s+import
+  - import\s+replicate
+  api_endpoints:
+  - api.replicate.com
+  config_key_patterns:
+  - REPLICATE_API_TOKEN
+  model_patterns:
+  - replicate/[\w-]+/[\w-]+
+  - model\s*[:=]\s*["']?[\w-]+/[\w-]+
+  client_patterns:
+  - replicate\.run\s*\(
+  - Replicate\s*\(
+- name: Together AI
+  package_names:
+  - together
+  import_patterns:
+  - from\s+together\s+import
+  - import\s+together
+  api_endpoints:
+  - api.together.xyz
+  config_key_patterns:
+  - TOGETHER_API_KEY
+  model_patterns:
+  - model\s*[:=]\s*["']?[\w-]+/[\w-]+
+  - together\.ai.*model
+  client_patterns:
+  - Together\s*\(
+- name: Perplexity
+  package_names: []
+  import_patterns: []
+  api_endpoints:
+  - api.perplexity.ai
+  config_key_patterns:
+  - PERPLEXITY_API_KEY
+  model_patterns:
+  - llama-[\w-]+
+  - pplx-[\w-]+
+  client_patterns:
+  - perplexity
+- name: Mistral AI
+  package_names:
+  - mistralai
+  import_patterns:
+  - from\s+mistralai\s+import
+  - import\s+mistralai
+  - from\s+langchain\.mistralai
+  api_endpoints:
+  - api.mistral.ai
+  - api.mistral.ai/v1
+  config_key_patterns:
+  - MISTRAL_API_KEY
+  model_patterns:
+  - mistral-[\w-]+
+  - mixtral-[\w-]+
+  - mistral-large
+  client_patterns:
+  - Mistral\s*\(
+  - MistralClient\s*\(
+  - ChatMistralAI\s*\(
+- name: Groq
+  package_names:
+  - groq
+  import_patterns:
+  - from\s+groq\s+import
+  - import\s+groq
+  - from\s+langchain\.groq
+  api_endpoints:
+  - api.groq.com
+  config_key_patterns:
+  - GROQ_API_KEY
+  model_patterns:
+  - llama-[\w-]+
+  - mixtral-[\w-]+
+  - gemma-[\w-]+
+  client_patterns:
+  - Groq\s*\(
+  - ChatGroq\s*\(
+- name: Ollama
+  package_names:
+  - ollama
+  import_patterns:
+  - from\s+ollama\s+import
+  - import\s+ollama
+  - from\s+langchain\.ollama
+  api_endpoints:
+  - localhost:11434
+  - 127.0.0.1:11434
+  - ollama.com
+  config_key_patterns:
+  - OLLAMA_BASE_URL
+  - OLLAMA_HOST
+  model_patterns:
+  - \bllama2\b
+  - \bllama3\b
+  - \bmistral\b
+  - \bcodellama\b
+  - \bphi\b
+  - \bneural-chat\b
+  - model\s*[:=]\s*["']?\b(llama2|llama3|mistral|codellama|phi|neural-chat)\b
+  client_patterns:
+  - Ollama\s*\(
+  - ChatOllama\s*\(
+  - ollama\.chat
+- name: AI21 Labs
+  package_names:
+  - ai21
+  import_patterns:
+  - from\s+ai21\s+import
+  - import\s+ai21
+  - from\s+langchain\.ai21
+  api_endpoints:
+  - api.ai21.com
+  config_key_patterns:
+  - AI21_API_KEY
+  model_patterns:
+  - j2-[\w-]+
+  - jurassic-[\w-]+
+  client_patterns:
+  - AI21\s*\(
+  - ChatAI21\s*\(
+- name: Stability AI
+  package_names:
+  - stability-sdk
+  import_patterns:
+  - from\s+stability_sdk\s+import
+  - import\s+stability_sdk
+  api_endpoints:
+  - api.stability.ai
+  config_key_patterns:
+  - STABILITY_API_KEY
+  - STABILITY_API
+  model_patterns:
+  - stable-diffusion
+  - stablelm
+  client_patterns:
+  - StabilityInference\s*\(
+- name: Fireworks AI
+  package_names:
+  - fireworks
+  import_patterns:
+  - from\s+fireworks\s+import
+  - import\s+fireworks
+  api_endpoints:
+  - api.fireworks.ai
+  config_key_patterns:
+  - FIREWORKS_API_KEY
+  model_patterns:
+  - fireworks-[\w-]+
+  - llama-[\w-]+
+  client_patterns:
+  - Fireworks\s*\(
+- name: xAI
+  package_names:
+  - xai
+  import_patterns:
+  - from\s+xai\s+import
+  - import\s+xai
+  api_endpoints:
+  - api.x.ai
+  config_key_patterns:
+  - XAI_API_KEY
+  model_patterns:
+  - grok-[\w-]+
+  - grok-beta
+  client_patterns:
+  - xAI\s*\(
+- name: Aleph Alpha
+  package_names:
+  - aleph-alpha-client
+  import_patterns:
+  - from\s+aleph_alpha_client\s+import
+  - import\s+aleph_alpha_client
+  api_endpoints:
+  - api.aleph-alpha.com
+  config_key_patterns:
+  - ALEPH_ALPHA_API_KEY
+  model_patterns:
+  - luminous-[\w-]+
+  client_patterns:
+  - AlephAlpha\s*\(
+- name: LocalAI
+  package_names:
+  - localai
+  import_patterns:
+  - from\s+localai\s+import
+  - import\s+localai
+  api_endpoints: []
+  config_key_patterns:
+  - LOCALAI_BASE_URL
+  model_patterns: []
+  client_patterns:
+  - LocalAI\s*\(
+- name: vLLM
+  package_names:
+  - vllm
+  import_patterns:
+  - from\s+vllm\s+import
+  - import\s+vllm
+  api_endpoints: []
+  config_key_patterns: []
+  model_patterns: []
+  client_patterns:
+  - from\s+vllm\s+import.*LLM
+  - vllm\.LLM\s*\(
+  - vLLM\s*\(
+- name: Cohere
+  package_names:
+  - cohere
+  import_patterns:
+  - from\s+cohere\s+import
+  - import\s+cohere
+  - from\s+langchain\.cohere
+  api_endpoints:
+  - api.cohere.ai
+  - api.cohere.com
+  - api.cohere.ai/v1
+  config_key_patterns:
+  - COHERE_API_KEY
+  model_patterns:
+  - command-[\w-]+
+  - embed-[\w-]+
+  - rerank-[\w-]+
+  client_patterns:
+  - Cohere\s*\(
+  - ChatCohere\s*\(
+  - CohereClient\s*\(

@@ -1,0 +1,2 @@
+# Required for YAML service configuration
+pyyaml>=6.0
