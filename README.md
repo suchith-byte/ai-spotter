@@ -3,7 +3,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A security-focused CLI tool that scans repositories to detect usage of external AI services, LLMs, and AI providers by analyzing code, dependencies, configuration files, and API keys.
+A CLI tool that scans repositories to detect usage of external AI services, LLMs, and AI providers by analyzing code, dependencies, configuration files, and API keys.
 
 ## Features
 
