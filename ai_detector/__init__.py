@@ -11,7 +11,7 @@ Example usage:
 """
 
 __version__ = "0.1.0"
-__author__ = "AI Detector Team"
+__author__ = "Suchith"
 
 from .config import AppConfig, get_config, set_config
 from .detectors import DetectionResult, DetectorManager
