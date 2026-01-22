@@ -12,8 +12,6 @@ A CLI tool that scans repositories to detect usage of external AI services, LLMs
   - Code pattern matching (imports, API calls, client instantiation)
   - Configuration file scanning (.env, YAML, JSON, TOML)
 
-- **20+ AI Services Supported**: OpenAI, Anthropic, Google AI/Gemini, Hugging Face, LangChain, Azure OpenAI, AWS Bedrock, Cohere, Mistral AI, Groq, Ollama, and more
-
 - **Multiple Output Formats**: JSON, text, or CSV reports with GitHub hyperlinks
 
 - **Flexible Configuration**: YAML-based service definitions, environment variables
