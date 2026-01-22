@@ -1,4 +1,4 @@
-# AI Service Detector
+# AI-Spotter
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -25,8 +25,8 @@ A security-focused CLI tool that scans repositories to detect usage of external 
 ### Option 1: Run Directly (No Installation)
 
 ```bash
-git clone https://github.com/yourusername/check-ai-usage.git
-cd check-ai-usage
+git clone https://github.com/yourusername/ai-spotter.git
+cd ai-spotter
 pip install -r requirements.txt
 
 # Run directly
@@ -37,8 +37,8 @@ python run.py --local-path /path/to/repo
 ### Option 2: Install as Package
 
 ```bash
-git clone https://github.com/yourusername/check-ai-usage.git
-cd check-ai-usage
+git clone https://github.com/yourusername/ai-spotter.git
+cd ai-spotter
 pip install .
 
 # Use the ai-detector command
@@ -51,11 +51,6 @@ ai-detector --help
 pip install -e ".[dev]"
 ```
 
-### Option 4: From PyPI (when published)
-
-```bash
-pip install ai-detector
-```
 
 ## Usage
 

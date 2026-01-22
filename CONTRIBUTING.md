@@ -1,6 +1,6 @@
-# Contributing to AI Detector
+# Contributing to AI-Spotter
 
-Thank you for your interest in contributing to AI Detector! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to AI-Spotter! This document provides guidelines and instructions for contributing.
 
 ## Getting Started
 
@@ -13,8 +13,8 @@ Thank you for your interest in contributing to AI Detector! This document provid
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/check-ai-usage.git
-   cd check-ai-usage
+   git clone https://github.com/yourusername/ai-spotter.git
+   cd ai-spotter
    ```
 
 2. **Create a virtual environment:**
@@ -35,21 +35,6 @@ Thank you for your interest in contributing to AI Detector! This document provid
 
 ## Making Changes
 
-### Code Style
-
-We use the following tools to maintain code quality:
-
-- **Black** for code formatting
-- **Ruff** for linting
-- **MyPy** for type checking
-
-Before submitting a PR, run:
-
-```bash
-black ai_detector/
-ruff check ai_detector/
-mypy ai_detector/
-```
 
 ### Adding New AI Services
 
@@ -73,17 +58,7 @@ To add support for a new AI service, edit `ai_detector/services.yaml`:
     - 'NewAIClient\s*\('
 ```
 
-### Testing
 
-- Write tests for any new functionality
-- Ensure all existing tests pass
-- Add test cases for edge cases
-
-Run tests:
-```bash
-pytest
-pytest --cov=ai_detector  # With coverage
-```
 
 ## Pull Request Process
 

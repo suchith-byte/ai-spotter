@@ -57,10 +57,10 @@ dev = [
 ai-detector = "ai_detector.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/check-ai-usage"
-Repository = "https://github.com/yourusername/check-ai-usage"
-Documentation = "https://github.com/yourusername/check-ai-usage#readme"
-Issues = "https://github.com/yourusername/check-ai-usage/issues"
+Homepage = "https://github.com/yourusername/ai-spotter"
+Repository = "https://github.com/yourusername/ai-spotter"
+Documentation = "https://github.com/yourusername/ai-spotter#readme"
+Issues = "https://github.com/yourusername/ai-spotter/issues"
 
 [tool.setuptools.packages.find]
 include = ["ai_detector*"]
